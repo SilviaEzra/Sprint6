@@ -1,0 +1,58 @@
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center"> <!-- Centra horizontalmente -->
+      <div class="col-md-12">
+        <div class="large-box">
+          <p>Aconsegueix la millor qualitat</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container" id="container2">
+      <div class="row justify-content-center" id="row-custom"> <!-- Centra horizontalmente -->
+        <div class="col-md-4"> <!-- Reducido un 30% -->
+          <h3 class="text-left">Seo</h3>
+          <p class="text-left">Programació d'una web responsive completa.</p> 
+        </div>
+        <div class="col-md-4"> <!-- Reducido un 30% -->
+          <h2 class="text-center">300€</h2>
+        </div> 
+        <div class="col-md-4 d-flex justify-content-end"> <!-- Reducido un 30% -->
+          <input type="checkbox" id="checkbox"> Afegir
+        </div>
+      </div>
+      
+      <div class="row justify-content-center" id="row-custom"> <!-- Centra horizontalmente -->
+        <div class="col-md-4"> <!-- Reducido un 30% -->
+          <h3 class="text-left">Ads</h3>
+          <p class="text-left">Programació d'una web responsive completa.</p> 
+        </div>
+        <div class="col-md-4"> <!-- Reducido un 30% -->
+          <h2 class="text-center">400€</h2>
+        </div> 
+        <div class="col-md-4 d-flex justify-content-end"> <!-- Reducido un 30% -->
+          <input type="checkbox" id="checkbox"> Afegir
+        </div>
+      </div>
+      
+      <div class="row justify-content-center" id="row-custom"> <!-- Centra horizontalmente -->
+        <div class="col-md-4"> <!-- Reducido un 30% -->
+          <h3 class="text-left">Web</h3>
+          <p class="text-left">Programació d'una web responsive completa.</p> 
+        </div>
+        <div class="col-md-4"> <!-- Reducido un 30% -->
+          <h2 class="text-center">500€</h2>
+        </div> 
+        <div class="col-md-4 d-flex justify-content-end"> <!-- Reducido un 30% -->
+          <input type="checkbox" id="checkbox"> Afegir
+        </div>
+        
+      </div>
+      <p class="text-center" id="p4">Preu pressuposat:</p>
+    </div>
+    
+  
+<app-root></app-root>
+</body>
+</html>

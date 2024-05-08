@@ -1,0 +1,29 @@
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group rounded">
+        <label for="numPages" class="sr-only">Número de páginas:</label>
+        <input type="number" class="form-control rounded mr-2" id="numPages" name="numPages" [(ngModel)]="opcionesWeb.numeroDePaginas">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary rounded-left mr-2" type="button" (click)="sumarPagina()">+</button>
+          <button class="btn btn-outline-secondary rounded-right" type="button" (click)="restarPagina()">-</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-3 mt-md-0">
+      <div class="input-group rounded">
+        <label for="numLanguages" class="sr-only">Número de idiomas:</label>
+        <input type="number" class="form-control rounded mr-2" id="numLanguages" name="numLanguages" [(ngModel)]="opcionesWeb.numeroDeIdiomas">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary rounded-left mr-2" type="button" (click)="sumarIdioma()">+</button>
+          <button class="btn btn-outline-secondary rounded-right" type="button" (click)="restarIdioma()">-</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
