@@ -33,6 +33,9 @@ export class PanelComponent {
     numeroDeIdiomas: 1,
   };
   showModal = false;
+  showModaldos = false;
+ 
+
   constructor(private presupuestoService: PresupuestoService,
               @Inject(HomeComponent) private home: HomeComponent) {
    /*  this.precioTotal = this.presupuestoService.calcularPresupuestoTotal(this.opcionesWeb.numeroDePaginas, this.opcionesWeb.numeroDeIdiomas);
@@ -78,14 +81,24 @@ export class PanelComponent {
  
   openModal() {
     this.showModal = true;
+   
   }
 
   closeModal() {
     this.showModal = false;
+   
   }
 
-  // Métodos para incrementar y decrementar el número de páginas e idiomas
-  // ...
+  openModaldos() {
+    this.showModaldos = true;
+    
+  }
+
+  closeModaldos() {
+    this.showModaldos = false;
+    
+
+  }
 
   
 }

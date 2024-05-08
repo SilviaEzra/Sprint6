@@ -1,10 +1,15 @@
 
-<div class="container mt-3">
+<div class="container mt-3 d-flex justify-content-center">
   <div class="row">
     <div class="col-md-6">
       <!-- Input para el número de páginas -->
       <div class="input-group rounded">
-        <label for="numPages" class="sr-only">Número de páginas:</label>
+        <button class="btn btn-outline p-1" (click)="openModal()">
+          <img src="assets/img/icon.png" alt="Abrir Modal" style="width: 20px; height: 20px;">
+        </button>
+        <div class="d-flex align-items-center">
+          <label for="numPages" class="mb-0 mr-2">Número de páginas:</label>
+        </div>
         <input type="number" class="form-control rounded mr-2" id="numPages" name="numPages" [(ngModel)]="opcionesWeb.numeroDePaginas">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary rounded-left mr-2" type="button" (click)="sumarPagina()">+</button>
@@ -15,7 +20,12 @@
     <div class="col-md-6 mt-3 mt-md-0">
       <!-- Input para el número de idiomas -->
       <div class="input-group rounded">
-        <label for="numLanguages" class="sr-only">Número de idiomas:</label>
+        <button class="btn btn-outline p-1" (click)="openModaldos()">
+          <img src="assets/img/icon.png" alt="Abrir Modal 2" style="width: 20px; height: 20px;">
+        </button>
+        <div class="d-flex align-items-center">
+          <label for="numLanguages" class="mb-0">Número de idiomas:</label>
+        </div>
         <input type="number" class="form-control rounded mr-2" id="numLanguages" name="numLanguages" [(ngModel)]="opcionesWeb.numeroDeIdiomas">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary rounded-left mr-2" type="button" (click)="sumarIdioma()">+</button>
@@ -26,23 +36,32 @@
   </div>
 </div>
 
-<!-- Botón para abrir el modal -->
-<button class="btn btn-primary" (click)="openModal()">
-  <img src="assets/img/icon.png" alt="Abrir Modal">
-</button>
 
 <!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'d-block': showModaldos}" style="background-color: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Número de idiomas </h5>
+      </div>
+      <div class="modal-body">
+        <p>Agrega el número de lenguajes que necesita la página, cada lenguaje vale 30€.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModaldos()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'d-block': showModal}" style="background-color: rgba(0, 0, 0, 0.5);">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Mensaje de Información</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title">Número de páginas</h5>
       </div>
       <div class="modal-body">
-        <p>Este es un mensaje de información.</p>
+        <p>Este es el número de páginas que necesita la web. Cada página vale 30€.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>

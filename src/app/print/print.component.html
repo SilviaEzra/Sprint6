@@ -1,7 +1,26 @@
-<div *ngFor="let presupuesto of printedPresupuestos">
-  <h3>Presupuesto</h3>
-  <p>Nombre: {{ presupuesto.nombre }}</p>
-  <p>Email: {{ presupuesto.email }}</p>
-  <p>Teléfono: {{ presupuesto.telefono }}</p>
-  <p>Precio Final: {{ presupuesto.precioFinal }}</p>
-</div>
+<div *ngFor="let presupuesto of printedPresupuestos" class="container mt-5 mb-5" id="colortext">
+  
+    <div class="card-body">
+      <h3 class="font-weight-bold align-items-center text-center">Presupuesto</h3>
+      <br>
+      <div class="row">
+        <div class="col">
+          <p class="card-text font-weight-bold">Nombre:</p>
+          <p class="card-text">{{ presupuesto.nombre }}</p>
+        </div>
+        <div class="col">
+          <p class="card-text font-weight-bold">Email:</p>
+          <p class="card-text">{{ presupuesto.email }}</p>
+        </div>
+        <div class="col">
+          <p class="card-text font-weight-bold">Teléfono:</p>
+          <p class="card-text">{{ presupuesto.telefono }}</p>
+        </div>
+        <div class="col">
+          <p class="card-text font-weight-bold">Precio Final:</p>
+          <p class="card-text">{{ presupuesto.precioFinal }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+

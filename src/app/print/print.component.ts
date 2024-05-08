@@ -13,6 +13,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class PrintComponent implements OnChanges {
   @Input() precioFinal: number = 0;
+  @Input() precioPresupuestado: string | number = '';
   constructor(private changeDetectorRef: ChangeDetectorRef) {} 
   @Input() userData: any;
   @Input() presupuestos: any[] = [];
@@ -20,11 +21,16 @@ export class PrintComponent implements OnChanges {
   printedPresupuestos: any[] = []; // Propiedad para almacenar los presupuestos impresos
 
   ngOnChanges(changes: SimpleChanges): void {
-  if (changes['presupuestos'] && changes['presupuestos'].currentValue) {
-    const newPresupuestos = changes['presupuestos'].currentValue;
-    this.printedPresupuestos = [...this.printedPresupuestos, ...newPresupuestos]; // Agregar nuevos presupuestos al array
-    console.log('Nuevos presupuestos recibidos:', newPresupuestos);
-    this.changeDetectorRef.detectChanges(); // Detectar cambios para actualizar la vista
+    if (changes['presupuestos'] && changes['presupuestos'].currentValue) {
+      // Reemplazar el array de presupuestos
+      this.printedPresupuestos = changes['presupuestos'].currentValue;
+      console.log('Nuevos presupuestos recibidos:', this.printedPresupuestos);
+      this.changeDetectorRef.detectChanges(); // Detectar cambios para actualizar la vista
+    }
+
+    if (changes['precioFinal'] && typeof changes['precioFinal'].currentValue === 'number') {
+      // Se ha recibido un nuevo valor para el precio final
+      console.log('Nuevo precio final recibido:', changes['precioFinal'].currentValue);
+    }
   }
 }
-  }

@@ -4,12 +4,12 @@ import { PanelComponent } from '../panel/panel.component';
 import { CommonModule } from '@angular/common';
 import { PresupuestoService } from '../services/presupuesto.service';
 import { PresupuestosComponent } from '../presupuestos/presupuestos.component';
-
+import { PrintComponent } from '../print/print.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, PanelComponent, CommonModule, PresupuestosComponent],
+  imports: [FormsModule, ReactiveFormsModule, PanelComponent, CommonModule, PresupuestosComponent, PrintComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 

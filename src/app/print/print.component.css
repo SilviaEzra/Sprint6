@@ -1,0 +1,8 @@
+.container{
+    color: #0093a0
+}
+
+.card-body h3,
+.card-text.font-weight-bold {
+  font-weight: bold;
+}
