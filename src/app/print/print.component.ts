@@ -20,11 +20,11 @@ export class PrintComponent implements OnChanges {
   printedPresupuestos: any[] = []; // Propiedad para almacenar los presupuestos impresos
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['presupuestos'] && changes['presupuestos'].currentValue) {
-      const newPresupuestos = changes['presupuestos'].currentValue;
-      this.printedPresupuestos = [...this.printedPresupuestos, ...newPresupuestos]; // Agregar nuevos presupuestos al array
-      console.log('Nuevo presupuesto recibido:', newPresupuestos);
-      this.changeDetectorRef.detectChanges(); // Detectar cambios para actualizar la vista
-    }
+  if (changes['presupuestos'] && changes['presupuestos'].currentValue) {
+    const newPresupuestos = changes['presupuestos'].currentValue;
+    this.printedPresupuestos = [...this.printedPresupuestos, ...newPresupuestos]; // Agregar nuevos presupuestos al array
+    console.log('Nuevos presupuestos recibidos:', newPresupuestos);
+    this.changeDetectorRef.detectChanges(); // Detectar cambios para actualizar la vista
   }
+}
   }

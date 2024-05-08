@@ -2,6 +2,7 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-md-6">
+      <!-- Input para el número de páginas -->
       <div class="input-group rounded">
         <label for="numPages" class="sr-only">Número de páginas:</label>
         <input type="number" class="form-control rounded mr-2" id="numPages" name="numPages" [(ngModel)]="opcionesWeb.numeroDePaginas">
@@ -12,6 +13,7 @@
       </div>
     </div>
     <div class="col-md-6 mt-3 mt-md-0">
+      <!-- Input para el número de idiomas -->
       <div class="input-group rounded">
         <label for="numLanguages" class="sr-only">Número de idiomas:</label>
         <input type="number" class="form-control rounded mr-2" id="numLanguages" name="numLanguages" [(ngModel)]="opcionesWeb.numeroDeIdiomas">
@@ -24,6 +26,27 @@
   </div>
 </div>
 
+<!-- Botón para abrir el modal -->
+<button class="btn btn-primary" (click)="openModal()">
+  <img src="assets/img/icon.png" alt="Abrir Modal">
+</button>
 
-
-
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'d-block': showModal}" style="background-color: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Mensaje de Información</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Este es un mensaje de información.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

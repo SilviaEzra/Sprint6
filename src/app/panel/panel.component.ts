@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { Input, Output, EventEmitter, Inject } from '@angular/core';
 import { PresupuestoService } from '../services/presupuesto.service'; // Import PresupuestoService
 import { HomeComponent } from '../home/home.component';
-import { ModalComponent } from '../modal/modal.component';
 
 interface OpcionesWeb {
   numeroDePaginas: number;
@@ -21,7 +20,6 @@ interface OpcionesWeb {
   imports: [
     CommonModule, // Importar CommonModule para directivas comunes
     FormsModule,
-    ModalComponent,
     HomeComponent
      // Importar FormsModule para formularios reactivos
   ],
@@ -34,7 +32,7 @@ export class PanelComponent {
     numeroDePaginas: 1,
     numeroDeIdiomas: 1,
   };
-
+  showModal = false;
   constructor(private presupuestoService: PresupuestoService,
               @Inject(HomeComponent) private home: HomeComponent) {
    /*  this.precioTotal = this.presupuestoService.calcularPresupuestoTotal(this.opcionesWeb.numeroDePaginas, this.opcionesWeb.numeroDeIdiomas);
@@ -78,7 +76,13 @@ export class PanelComponent {
     /* this.precioTotal = this.presupuestoService.calcularPresupuestoTotal(this.opcionesWeb.numeroDePaginas, this.opcionesWeb.numeroDeIdiomas); */
   }
  
+  openModal() {
+    this.showModal = true;
+  }
 
+  closeModal() {
+    this.showModal = false;
+  }
 
   // Métodos para incrementar y decrementar el número de páginas e idiomas
   // ...
