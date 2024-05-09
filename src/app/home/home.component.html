@@ -50,6 +50,7 @@
             <app-panel [isVisible]="showInput" (opcionesWebChange)="onOpcionesWebChange($event)"></app-panel>
       </div>
     </div>
-<p class="text-center" id="p4">Preu pressuposat: {{ formulario.get('Web')?.value ? precioFinal('Web') : calcularPrecioTotal() }}€</p>
+    <p class="text-center" id="p4">Preu pressuposat: {{ formulario.get('Web')?.value ? precioFinal : calcularPrecioTotal() }}€</p>
   
-<app-presupuestos></app-presupuestos>
+<app-presupuestos [precioFinal]="precioFinal"></app-presupuestos>
+<app-print [precioFinal]="precioFinal"></app-print>

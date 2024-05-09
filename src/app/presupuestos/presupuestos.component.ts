@@ -43,45 +43,38 @@ export class PresupuestosComponent {
   
   showPrintComponent = false;
   
-  
- precioFinal: number = 0;
-
- constructor() {}
-
-  
- manejarPrecioFinalChange(precioFinal: number) {
-  console.log('Precio final recibido en PresupuestosComponent:', precioFinal);
-  this.precioFinal = precioFinal; // Actualizamos el precio final
+ @Output() presupuestosChanged = new EventEmitter<any[]>();
+ @Input()precioFinal: number = 0;
+ onPresupuestosChanged(nuevosPresupuestos: any[]) {
+  this.presupuestos = nuevosPresupuestos;
 }
 
-@Output() printData = new EventEmitter<any>(); // Event to emit data
-   // Array para almacenar los presupuestos
+
+  constructor() {}
 
   onSubmit() {
     if (this.formUser.valid) {
-      // Agregar el presupuesto al array
-      this.presupuestos.push({
-        nombre: this.name.value,
-        email: this.mail.value,
-        telefono: this.telf.value,
-        precioFinal: this.precioFinal
-      });
+      // Llama a printTotal con el precio final
+      this.printTotal(this.precioFinal);
       this.showPrintComponent = true;
+      console.log(this.precioFinal)
     }
   }
 
-  
-
-  printTotal() {
-    const total = this.precioFinal;
-    
-    // Agregar el nuevo presupuesto al array de presupuestos
-    this.presupuestos.push({
+  printTotal(precioFinal: number) {
+  if (this.formUser.valid) {
+    // Agregar el presupuesto al array
+    const nuevoPresupuesto = {
       nombre: this.name.value,
       email: this.mail.value,
       telefono: this.telf.value,
-      precioFinal: total
-    });
- 
-
-}}
+      precio: this.precioFinal
+    };
+    this.presupuestos.push(nuevoPresupuesto);
+    console.log(precioFinal);
+    
+    // Emitir el evento con el nuevo array de presupuestos
+    this.presupuestosChanged.emit([...this.presupuestos]); // Crear una copia del array para evitar mutaciones inesperadas
+  }
+}
+}

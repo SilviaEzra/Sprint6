@@ -18,20 +18,19 @@ import { PrintComponent } from '../print/print.component';
 })
 
 export class HomeComponent {
-  numeroDePaginas:number = 1
-  numeroDeIdiomas:number = 1
-  precioTotal: number = 0
+  numeroDePaginas: number = 1;
+  numeroDeIdiomas: number = 1;
+  precioTotal: number = 0;
+  precioFinal: number = 0;
+
   @Output() precioFinalChange: EventEmitter<number> = new EventEmitter<number>();
 
-constructor(private presupuestoService: PresupuestoService, private cdr: ChangeDetectorRef, private changeDetectorRef: ChangeDetectorRef) { }
-  
-onOpcionesWebChange(event: { numeroDePaginas: number, numeroDeIdiomas: number }) {
-    // Maneja los datos recibidos, por ejemplo, puedes almacenarlos en variables locales
+  constructor(private presupuestoService: PresupuestoService, private cdr: ChangeDetectorRef) {}
+
+  onOpcionesWebChange(event: { numeroDePaginas: number, numeroDeIdiomas: number }) {
     this.numeroDePaginas = event.numeroDePaginas;
     this.numeroDeIdiomas = event.numeroDeIdiomas;
-    
-    
-    // Puedes realizar cualquier otra lógica necesaria con estos datos
+    this.actualizarPrecioFinal();
   }
 
   formulario = new FormGroup({
@@ -46,75 +45,50 @@ onOpcionesWebChange(event: { numeroDePaginas: number, numeroDeIdiomas: number })
     "Web": 500
   };
 
-
-  // Inyectar PresupuestoService
-
-  calcularPrecioTotal() {
+  calcularPrecioTotal(): number {
     let precioTotal = 0;
-    
-    
     const keys = Object.keys(this.formulario.controls);
     keys.forEach(key => {
       const control = this.formulario.get(key);
       if (control && control.value) {
         precioTotal += this.precios[key as keyof typeof this.precios];
-        
       }
     });
     return precioTotal;
   }
 
-  precioFinal(controlName: string): number {
-    if (controlName === 'Web') {
-      const control = this.formulario.get('Web');
-      if (control && control.value) {
-        return (this.numeroDeIdiomas * this.numeroDePaginas * 30) + this.calcularPrecioTotal();
-      } else {
-        return 0; // Retornar 0 si la casilla no está marcada
-      }
-    } else {
-      return this.precioTotal;
-    }
-  }
-
   calcularPrecioFinal(): number {
-    return this.precioFinal('Web');
+    return this.formulario.get('Web')?.value ?
+      (this.numeroDeIdiomas * this.numeroDePaginas * 30) + this.calcularPrecioTotal() :
+      this.precioTotal;
   }
 
   emitirPrecioFinal(): void {
-    const precioFinal = this.calcularPrecioFinal();
-    console.log('Precio final emitido desde HomeComponent:', precioFinal);
-    this.precioFinalChange.emit(precioFinal);
+    if (this.precioFinal !== this.calcularPrecioFinal()) {
+      this.precioFinal = this.calcularPrecioFinal();
+      console.log('Precio final emitido desde HomeComponent:', this.precioFinal);
+      this.precioFinalChange.emit(this.precioFinal);
+    }
   }
-
 
   checkbox(event: any, controlName: string) {
     const control = this.formulario.get(controlName);
     if (control) {
       control.setValue(event.target.checked);
-    } 
+    }
     this.cdr.detectChanges();
     if (controlName === 'Web') {
       this.showInput = event.target.checked;
     }
-  }
- 
-  showInput: boolean= false;
-
-
-   
-  
+    this.actualizarPrecioFinal();
   }
 
+  showInput: boolean = false;
 
-
- 
-
-
-  
-
-
-
+  private actualizarPrecioFinal() {
+    this.emitirPrecioFinal();
+  }
+}
 
 
 

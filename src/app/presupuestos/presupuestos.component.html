@@ -25,4 +25,5 @@
 
 </form>
 
-<app-print *ngIf="showPrintComponent" [userData]="formUser.value" [precioFinal]="precioFinal"[presupuestos]="presupuestos"></app-print>
+
+<app-print *ngIf="showPrintComponent" [userData]="formUser.value" [precioFinal]="precioFinal" [presupuestos]="presupuestos" (presupuestosChanged)="presupuestos = $event"></app-print>
